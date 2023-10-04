@@ -23,7 +23,6 @@ public class UserController {
     public ResponseEntity<List<UserReadDTO>> findAll(){
         return ResponseEntity.ok(userService.findAll());
     }
-    @CrossOrigin
     @PostMapping
     public ResponseEntity<UserReadDTO> add(@RequestBody UserAddDTO userAddDTO){
         return ResponseEntity.ok(userService.add(userAddDTO));
@@ -38,7 +37,7 @@ public class UserController {
             @RequestBody UserEditDTO user){
         return ResponseEntity.ok(userService.edit(userId, user));
     }
-    @GetMapping("/delete/{userId}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<UserReadDTO> deleteById(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.deleteById(userId));
     }
