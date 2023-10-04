@@ -23,7 +23,7 @@ public class UserController {
     public ResponseEntity<List<UserReadDTO>> findAll(){
         return ResponseEntity.ok(userService.findAll());
     }
-    @PostMapping("/add")
+    @GetMapping("/add")
     public ResponseEntity<UserReadDTO> add(@RequestBody UserAddDTO userAddDTO){
         return ResponseEntity.ok(userService.add(userAddDTO));
     }
