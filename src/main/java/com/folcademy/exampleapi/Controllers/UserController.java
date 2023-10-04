@@ -23,7 +23,7 @@ public class UserController {
     public ResponseEntity<List<UserReadDTO>> findAll(){
         return ResponseEntity.ok(userService.findAll());
     }
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<UserReadDTO> add(@RequestBody UserAddDTO userAddDTO){
         return ResponseEntity.ok(userService.add(userAddDTO));
     }
@@ -31,13 +31,13 @@ public class UserController {
     public ResponseEntity<UserReadDTO> findById(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.findById(userId));
     }
-    @PutMapping("/{userId}")
+    @PutMapping("/modify/{userId}")
     public ResponseEntity<UserReadDTO> edit(
             @PathVariable Integer userId,
             @RequestBody UserEditDTO user){
         return ResponseEntity.ok(userService.edit(userId, user));
     }
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/delete/{userId}")
     public ResponseEntity<UserReadDTO> deleteById(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.deleteById(userId));
     }
