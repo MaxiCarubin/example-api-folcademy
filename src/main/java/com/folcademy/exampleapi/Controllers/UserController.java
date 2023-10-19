@@ -4,10 +4,9 @@ import com.folcademy.exampleapi.Models.Dtos.UserAddDTO;
 import com.folcademy.exampleapi.Models.Dtos.UserEditDTO;
 import com.folcademy.exampleapi.Models.Dtos.UserReadDTO;
 import com.folcademy.exampleapi.Services.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController
@@ -20,8 +19,10 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserReadDTO>> findAll(){
-        return ResponseEntity.ok(userService.findAll());
+    public ResponseEntity<Page<UserReadDTO>> findAll(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
+        return ResponseEntity.ok(userService.findAll(page, size));
     }
     @PostMapping
     public ResponseEntity<UserReadDTO> add(@RequestBody UserAddDTO userAddDTO){

@@ -30,4 +30,7 @@ public class UserEntity {
     @Column(name = "email", columnDefinition = "VARCHAR(100)")
     private String email;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private AddressEntity address;
 }
